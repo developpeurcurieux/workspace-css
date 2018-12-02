@@ -1,0 +1,37 @@
+.feature-box {
+    background-color: rgba($color-white, .8);
+    font-size: 1.5rem;    
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+    @include respond(tab-por) {
+        padding: 2rem;
+    }
+    
+    &__icon {
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        display: inline-block;
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        -webkit-background-clip: text; // make background-image visible only where the text is visible
+        color: transparent; // make the text transparent so we can now see the backgorund-image;
+
+        transition: transform .3s;
+
+        @include respond(tab-port) {
+           margin-bottom: 0;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+
+    /*
+    &__text {
+      // pas besoin de changer le fontsie de paragraph car font-size est herite depuis (heritage) feature-box  
+    }
+    */
+}

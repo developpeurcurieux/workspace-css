@@ -1,0 +1,107 @@
+.section-about {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0;
+    margin-top: -20vh;
+
+    @include respond(tab-por) {
+        padding: 20rem 0;
+    }
+}
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, .8),
+        rgba($color-primary-dark, .8)),
+        url(../img/nat-4.jpg); 
+        background-size: cover;
+
+        margin-top: -7rem;
+
+        transform: skewY(-7deg);
+
+        // .section-features > * selectionne tous les childs mais uniquement du premier degre
+        & > * {
+            transform: skewY(7deg);
+        }
+
+        @include respond(tab-por) {
+            padding: 10rem 0;
+        }
+}
+
+.section-tours {
+    background-color: $color-grey-light-1;
+    
+    margin-top: -10rem;
+
+    @include respond(tab-por) {
+        padding: 20rem 0 10rem 0;
+    }
+}
+
+.section-stories {
+    padding: 15rem 0;
+    // background-color: $color-grey-light-1; => a cause du background color la video est pose a droite normal a la suite du flux de position /!\
+
+    position: relative; // pour le composant bg-video
+
+    @include respond(tab-por) {
+        padding: 10rem 0;
+    }
+}
+
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+    @include respond(tab-por) {
+        padding: 10rem 0;
+    }
+}
+
+.book {
+    //<<<< Alternative a clip-path, astuce avec le gradient et transparent a 50%
+    background-image: linear-gradient(
+        105deg, rgba($color-white, .9) 0%,
+        rgba($color-white, .9) 50%,
+
+        transparent 50%),
+          url(../img/nat-10.jpg);
+
+    // -----------------------------
+    background-size: cover; // permet de filler tout le container
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+    
+    @include respond(tab-land) {
+        background-image: linear-gradient(105deg,
+        rgba($color-white, .9) 0%,
+        rgba($color-white, .9) 70%,
+        transparent 70%), 
+        url(../img/nat-10.jpg);
+        
+    }
+
+    @include respond(tab-por) {
+        background-image: linear-gradient(105deg,
+        rgba($color-white, .9) 0%,
+        rgba($color-white, .9) 100%,
+        transparent 70%), 
+        url(..img/nat-10.jpg);        
+    }
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+
+        @include respond(tab-land) {
+            width: 65%;    
+        }
+
+        @include respond(tab-por) {
+            width: 100%;
+        }
+    }
+}

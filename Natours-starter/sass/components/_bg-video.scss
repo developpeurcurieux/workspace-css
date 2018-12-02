@@ -1,0 +1,19 @@
+.bg-video {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+
+    opacity: .15;
+    overflow: hidden;
+
+    // pour que la video ne depasse pas a droite
+    &__content {
+        height: 100%; // height et width tous seuls ne suffisent pas a cause de l'aspect ration
+        width: 100%; 
+        object-fit: cover; // permet de fill width and height of parent
+    }
+}

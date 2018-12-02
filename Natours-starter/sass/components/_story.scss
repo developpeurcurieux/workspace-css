@@ -1,0 +1,123 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+
+    // pour ne pas rendre tout le bloc transparant y compris limage, on joue avec la couleur
+    background-color: rgba($color-white, 0.6);
+    padding: 6rem;
+    padding-left: 9rem; // 6 + 3 du translate du cercle = 9
+    font-size: $default-font-size; 
+
+    
+    
+    transform: skewX(-12deg);
+
+    /*
+    
+    & > * {
+    //     transform: skewX(12deg); // ok pour h et p mais pas pour la photo
+    //     // car on ne peut faire fonctionner deux transform en meme temps
+    //     // transform: translateX est plus prioritaire que skewX
+    // }
+
+    */
+
+
+        @include respond(tab-por) {
+            width: 100%;
+            padding: 4rem;
+            padding-left: 7rem;
+        }
+
+        @include respond(phone) {
+            transform: skewX(0);
+        }
+    
+    
+
+    &__shape {
+ 
+        background-color: orange;
+        
+
+        // outside permet le text de poser autour du cercle par exemple
+        width: 15rem; // requis pour shape-outside sinon outside ne fonctionne pas
+        height: 15rem; // requis pour shape-outside sinon outside ne fonctionne pas 
+        float: left; // requis pour shape-outside sinon outside ne fonctionne pas
+
+        
+        
+
+        // ici il vaut mieux utiliser transform et eviter de jouer avec le margin du cercle
+        transform: translateX(-3rem) skewX(12deg);
+        position: relative;
+
+        border-radius: 50%;
+
+        overflow: hidden;
+
+
+        @supports(clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+
+            // webkit pour opera, explorer et mozila
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+
+            border-radius: none;
+
+        }
+
+
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
+    }
+
+    &__img {
+        height: 100%; // 100% donc 15rem car le parent est a 15rem;
+        transform: translateX(-4rem) scale(1.4);
+
+        backface-visibility: hidden; // cache les imperfections des translations et animations
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+
+        transition: all .5s;
+    
+        backface-visibility: hidden; // permet deviter que le shake du caption
+    }
+    
+    &:hover &__caption {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+
+    }
+    
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+
+}

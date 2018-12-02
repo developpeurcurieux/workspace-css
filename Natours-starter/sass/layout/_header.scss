@@ -1,0 +1,83 @@
+.header {
+    height: 85vh; /* 95 % height of view port */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/hero-small.jpg);
+    background-size: cover; /* permet a limage de sajuster (taille) par rapport au navigateur */
+    background-position: top;
+    position: relative;
+    
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polgon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);            
+        height: 95vw;
+    }
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
+    // if the resolution est higer than 192dpi and width > 600px we load hero instead of hero-small.jps
+    // la ',' est un OR. Donc soit (min-resolution: 192dpi) and (min-width: 600px) or (min-width: 2000px)
+    /*
+    @media (min-resolution: 192dpi) and (min-width: 600px),
+    (min-width: 2000px) {
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-secondary-light, 0.8), 
+        rgba($color-secondary-dark, 0.8)), 
+        url(../img/hero.jpg);
+    } 
+
+    /!\ /!\ Les medias queries sont toujours en em
+
+
+        Pour safari il faut rajouter
+        (-web-kit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+
+    */
+
+
+
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    only screen and (-web-kit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+        (min-width: 125em) {
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-secondary-light, 0.8), 
+        rgba($color-secondary-dark, 0.8)), 
+        url(../img/hero.jpg);
+    } 
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+    @include respond(phone) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);            
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem; /* 40px par rapport au parent, donc on met le parent a position relative */
+        left: 4rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        text-align: center; /* permet de centrer le text mais AUSSI le <a> enfant ! */
+    }
+}
+

@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before { 
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is 
+    /* Pour permettre un zoom du client et mettre 10px pr fsize, on  10/16 = 0.625 donc 62.5% */
+    font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%
+
+   @include respond(tab-land) { // width < 900 
+        font-size: 56.25%; // on veut que 1rem = 9px, donc 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) { // width < 600
+        font-size: 50%; // on veut que 1rem = 8px, donc 8/16(default font-size navigateur) = 50%
+    }
+ 
+    @include respond(phone) {
+        font-size: 40%;
+    }
+
+    // /!\ Il faut respecter l'ordre des medias query car c'est le dernier qui sera applique
+
+
+    @include respond(big-desktop) {
+        font-size: 75%; // on veut que 1rem = 12px, donc 12/16= 0.75 soit 75%
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
+ 
