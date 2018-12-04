@@ -1,26 +1,70 @@
 .user-nav {
 
-    background-color: greenyellow;
+    
+
+    // override align-item: center in Header, we want all elements in header to be center except user-nav
+    align-self: stretch;
+
+    display: flex;
+    align-items: center;
+
+
+   
+
+    // select direct all children
+    & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%; // make the background to fill all element
+        display: flex;
+        align-items: center;
+    }
+
+    // select direct all children when hover
+    & > *:hover {
+        background-color: var(--color-grey-light-2);
+    }
 
     &__icon-box {
-
+        // display: flex; // third level of flex as container: header -> user-nav -> icon-box
+        // align-items: center;
+        // but we can do better, make it in & > * , so all children are container as flex
+        position: relative;
     }
 
     &__icon {
         width: 2.25rem;
         height: 2.25rem;
+        fill: var(--color-grey-dark-2); // it's a svg icon so we can change it's color by 'fill'
     }
 
     &__notification {
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        color: #fff;
 
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
+
+        display: flex;
+        justify-content: center; // TIP: we make notification as container 'flex' and then we make text center with 'jsutify-content'
     }
 
     &__user {
-
+        
     }
 
     &__user-photo {
         height: 3.75rem;
         border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    &__user-name {
+
     }
 }
