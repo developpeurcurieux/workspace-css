@@ -1,9 +1,11 @@
-@import "abstract/variables";
+@import 'abstract/variables';
 
-@import "base/base"; 
+@import 'base/base'; 
+@import 'base/layout';
+@import 'base/header';
 
-@import "components/logo";
-@import "components/search-box";
-@import "components/user-nav";
+@import 'components/logo';
+@import 'components/search-box';
+@import 'components/user-nav';
 
 
