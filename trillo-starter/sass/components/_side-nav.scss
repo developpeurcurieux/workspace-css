@@ -3,6 +3,11 @@
     font-size: 1rem;
     list-style: none;
     margin-top: 3.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        display: flex;
+        margin: 0;
+    }
     
 
     &__item {
@@ -11,6 +16,11 @@
         &:not(:last-child) {
             margin-bottom: .5rem;
         }
+
+        @media only screen and (max-width: $bp-medium) {
+             flex: 1; // occupe autant de place et width reparti entre les flex items
+        }
+
     }
 
     &__item::before {
@@ -63,6 +73,16 @@
 
         position: relative;
         z-index: 10;
+
+        @media only screen and (max-width: $bp-medium) {
+          justify-content: center;
+          padding: 2rem;         
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+            padding: 1.5rem .5rem;
+        }
     }
 
     &__link:hover,
@@ -75,6 +95,13 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor; // make the same color as the element or parent, very useful
+
+        @media only screen and (max-width: $bp-small) {
+            margin-right: 0;
+            margin-bottom: .7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }        
     }
 }
 
