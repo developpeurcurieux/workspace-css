@@ -1,0 +1,34 @@
+.recommend {
+    font-size: 1rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex; 
+    align-items: center;
+
+
+    &__count {
+        font-size: 1.4rem;
+        margin-right: auto;
+    }
+
+    &__friends {
+
+    }
+
+    &__photo {
+
+        box-sizing: content-box; 
+        // vu qu'on a ajouté le border et on veut que le width soit a 4rem
+        // forcement la photo va se retricir pour que : border + content = width, comme on le souhaite dans * { }
+        // ici ce nest le but donc on met content-box: donc le width est le content avec ou sans border
+
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+    }
+
+    &__photo:not(:last-child) {
+        margin-right: -1.5rem;
+    }
+}  
