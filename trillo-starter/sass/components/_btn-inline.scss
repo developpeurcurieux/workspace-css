@@ -13,9 +13,19 @@
 
     transition: all .2s;
 
+    & span {
+        margin-left: 3px;
+    }
+
     &:hover {
         color: var(--color-grey-dark-1);
+
+        & span {
+            margin-left: 8px;
+            transition: margin-left .2s;
+        }
     }
+   
 
     &:focus {
         outline: none; // fait sauter le contour du focus sur le bouton
